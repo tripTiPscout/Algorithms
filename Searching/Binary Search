@@ -44,8 +44,7 @@ public class Main {
         return indexOfKey;
     }
 
-    public static int runBinarySearchRecursively(
-            Integer[] sortedArray, int keyToFind, int arrayStartIndex, int arrayEndIndex) {
+    public static int runBinarySearchRecursively(Integer[] sortedArray, int keyToFind, int arrayStartIndex, int arrayEndIndex) {
 
         int middleOfArrayIndex =
                 arrayStartIndex  + ((arrayEndIndex - arrayStartIndex) / 2);
