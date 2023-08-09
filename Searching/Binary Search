@@ -23,8 +23,7 @@ public class Main {
         System.out.println(index4);
     }
 
-    public static int runBinarySearchIteratively(
-            Integer[] sortedArray, int keyToFind, int arrayStartIndex, int arrayEndIndex) {
+    public static int runBinarySearchIteratively(Integer[] sortedArray, int keyToFind, int arrayStartIndex, int arrayEndIndex) {
 
         int indexOfKey = -1;
 
