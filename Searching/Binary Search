@@ -1,0 +1,69 @@
+package advanced;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Integer[] sortedArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        int keyToFind = 8;
+
+        int index1 = Arrays.binarySearch(sortedArray, keyToFind);
+        System.out.println(index1);
+
+        int index2 = Collections.binarySearch(Arrays.asList(sortedArray), keyToFind);
+        System.out.println(index2);
+
+        int index3 = runBinarySearchIteratively(sortedArray, keyToFind, 0, sortedArray.length - 1);   //O(log n)
+        System.out.println(index3);
+
+        int index4 = runBinarySearchRecursively(sortedArray, keyToFind, 0, sortedArray.length - 1);   //O(log n)
+        System.out.println(index4);
+    }
+
+    public static int runBinarySearchIteratively(
+            Integer[] sortedArray, int keyToFind, int arrayStartIndex, int arrayEndIndex) {
+
+        int indexOfKey = -1;
+
+        while (arrayStartIndex <= arrayEndIndex) {
+
+            int middleOfArrayIndex =
+                    arrayStartIndex  + ((arrayEndIndex - arrayStartIndex) / 2);
+
+            if (sortedArray[middleOfArrayIndex] < keyToFind) {
+                arrayStartIndex = middleOfArrayIndex + 1;
+            } else if (sortedArray[middleOfArrayIndex] > keyToFind) {
+                arrayEndIndex = middleOfArrayIndex - 1;
+            } else if (sortedArray[middleOfArrayIndex] == keyToFind) {
+                indexOfKey = middleOfArrayIndex;
+                break;
+            }
+        }
+        return indexOfKey;
+    }
+
+    public static int runBinarySearchRecursively(
+            Integer[] sortedArray, int keyToFind, int arrayStartIndex, int arrayEndIndex) {
+
+        int middleOfArrayIndex =
+                arrayStartIndex  + ((arrayEndIndex - arrayStartIndex) / 2);
+
+        if (arrayEndIndex < arrayStartIndex) {
+            return -1;
+        }
+
+        if (keyToFind == sortedArray[middleOfArrayIndex]) {
+            return middleOfArrayIndex;
+        } else if (keyToFind < sortedArray[middleOfArrayIndex]) {
+            return runBinarySearchRecursively(
+                    sortedArray, keyToFind, arrayStartIndex, middleOfArrayIndex - 1);
+        } else {
+            return runBinarySearchRecursively(
+                    sortedArray, keyToFind, middleOfArrayIndex + 1, arrayEndIndex);
+        }
+    }
+
+}
