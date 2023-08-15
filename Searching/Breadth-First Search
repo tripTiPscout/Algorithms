@@ -55,6 +55,7 @@ public class Main {
         return components;
     }
 
+    // Time Complexity: O(V+E). Auxiliary Space: O(V). (V - number of nodes, E - number of edges)
     private static void bfs(int start, List<Deque<Integer>> components, List<List<Integer>> graph, boolean[] visited) {
         Deque<Integer> queue = new ArrayDeque<>();
         visited[start] = true;
