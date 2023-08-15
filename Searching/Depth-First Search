@@ -55,7 +55,7 @@ public class Main {
         return components;
     }
 
-    // Time complexity: O(V+E). Auxiliary Space: O(V+E). V - number of vertices, E - number of edges.
+    // Time complexity: O(V+E). Auxiliary Space: O(V+E). V-vertices(nodes), E-edges.
     private static void dfs(int node, List<Deque<Integer>> components, List<List<Integer>> graph, boolean[] visited) {
         if (!visited[node]) {
             visited[node] = true;
